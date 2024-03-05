@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    button {
+        background-color: green;
+        border: 0;
+        border-radius: 10px;
+        color: aliceblue;
+        margin-top: 10px;
+        padding: 10px;
+        margin-left: 10px;
+    }
+
+    .gradient-text {
+        color: transparent;
+        font-size: 18px;
+        background: -webkit-linear-gradient(30deg, #32c5ff 25%, #b620e0 50%, #f7b500 75%, #20e050 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: auto;
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-left: 20px;
+        text-wrap: wrap;
+
+
+
+        /* flex-direction: row; */
+    }
+
+    @keyframes gradientText {
+        0% {
+            background-position: 0;
+        }
+
+        100% {
+            background-position: 28000px;
+        }
+    }
+
+    .gradient-text {
+        animation: gradientText 400s infinite linear;
+        -webkit-animation: gradientText 400s infinite linear;
+    }
+    body{
+        background-image: url(https://img95.699pic.com/photo/40151/8919.gif_wh300.gif);
+        
+        background-size: 100% 100%;
+        background-repeat: repeat;
+    }
+</style>
+
+<body>
+
+    <div style="width: 100vw;height: 100vh;display: flex;">
+        <div style="width: 60%;height: 100%;display: flex;justify-content: center;align-items: center;">
+            <div style="width: 600px;height: 300px;border: 1px solid #000;border-radius: 10px;" class="gradient-text">
+                <span class="name" style="display: block;float: left;border-radius: 10px;"></span>
+            </div>
+        </div>
+        <div style="width: 40%;height: 100%;">
+            <p class="a" style="margin-top: 350px;margin-left: 280px;"></p>
+            <div style="width: 450px;height: 200px;border: 1px solid #000; border-radius: 10px;margin-top: 10px;"
+                class="w">
+            </div>
+            <button class="one">选一个人</button>
+            <button class="tow">选两个人</button>
+            <button class="boy">选男生</button>
+            <button class="gril">选女生</button>
+        </div>
+    </div>
+</body>
+<script>
+    let a = document.querySelector('.a')
+    let w = document.querySelector('.w')
+    setInterval(() => {
+        a.innerHTML = new Date().toLocaleString()
+    }, 1000);
+
+    const arr = [
+
+        {
+            name: '李周硕',
+            sex: '男'
+        },
+        {
+            name: '王康烁',
+            sex: '女'
+        },
+        {
+            name: '王子默',
+            sex: '男'
+        },
+        {
+            name: '康泽豪',
+            sex: '男'
+        },
+        {
+            name: '刘泽宇',
+            sex: '男'
+        },
+        {
+            name: '卢锦涛',
+            sex: '男'
+        },
+        {
+            name: '席晓曼',
+            sex: '女'
+        },
+        {
+            name: '韩润佳',
+            sex: '女'
+        },
+        {
+            name: '马鹏飞',
+            sex: '男'
+        },
+        {
+            name: '李炫烨',
+            sex: '男'
+        },
+        {
+            name: '贾凯源',
+            sex: '男'
+        },
+        {
+            name: '石海滨',
+            sex: '男'
+        },
+        {
+            name: '李子豪',
+            sex: '男'
+        },
+        {
+            name: '卢晨宇',
+            sex: '女'
+        },
+        {
+            name: '王和',
+            sex: '女'
+        },
+        {
+            name: '米桂慧',
+            sex: '男'
+        },
+        {
+            name: '谭宏星',
+            sex: '男'
+        },
+        {
+            name: '赵亚雷',
+            sex: '男'
+        },
+        {
+            name: '王和',
+            sex: '女'
+        },
+    ]
+    let name = document.querySelector('.gradient-text')
+    for (let i = 0; i < arr.length; i++) {
+
+        name.innerHTML += `<span style="padding: 10px;border: 1px solid #ccc;margin-top: 30px;margin-left: 10px;display: block;float: left;border-radius: 10px;">${arr[i].name}</span>`
+    }
+    let one = document.querySelector('.one')
+    let tow = document.querySelector('.tow')
+    let boy = document.querySelector('.boy')
+    let gril = document.querySelector('.gril')
+    let boyarr = arr.filter(item => {
+        return item.sex == '男'
+    })
+    let grilarr = arr.filter(item => {
+        return item.sex == '女'
+    })
+    // console.log(boyarr);
+    one.onclick = function () {
+        let min = 0
+        let max = arr.length - 1
+        let randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+        w.innerHTML = `<p class='gradient-text' style='display: block;float:left;border-radius:10px'>${arr[randomNumber].name}</p>`
+    }
+    tow.onclick = function () {
+        let min = 0
+        let max = arr.length - 1
+        let randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+        let mi = 0
+        let ma = arr.length - 1
+        let mm = Math.floor(Math.random() * (ma - mi + 1)) + mi;
+        while (randomNumber === mm) {
+            let mi = 0
+            let ma = arr.length - 1
+            mm = Math.floor(Math.random() * (ma - mi + 1)) + mi;
+
+
+        }
+        w.innerHTML = `<p class='gradient-text' style='display: block;float:left;border-radius:10px'>${arr[randomNumber].name}</p>`+`<p class='gradient-text' style='display: block;float:left;border-radius:10px'>${arr[mm].name}</p>`
+    }
+    boy.onclick = function() {
+        let min = 0
+        let max = arr.length - 1
+        let randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+        w.innerHTML = `<p class='gradient-text' style='display: block;float:left;border-radius:10px'>${boyarr[randomNumber].name}</p>`
+    }
+    gril.onclick = function() {
+        let min = 0
+        let max = arr.length - 1
+        let randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+        w.innerHTML = `<p class='gradient-text' style='display: block;float:left;border-radius:10px'>${grilarr[randomNumber].name}</p>`
+    }
+</script>
+
+</html>
